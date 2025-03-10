@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [MUI.com](https://mui.com/)
 
+for Auth i have used firebase and the login details are as follows 
+
+mail: admin@admin.com
+password: admin123
+
 ## Available Scripts
 
 In the project directory, you can run:
