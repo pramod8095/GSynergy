@@ -6,9 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { chartData } from "../../store/centeralDataSlice";
 import { Box, CircularProgress } from "@mui/material";
 
-const lol1 = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
-const lol2 = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
-
 
 export default function ChartsApp() {
   const chartState = useSelector((state) => state.optimus.chartData);
@@ -18,16 +15,15 @@ export default function ChartsApp() {
 
   const getData = async () => {
     const responce = await getChartData();
-    console.log(responce);
     dispatch(chartData(responce));
   };
 
   const assignValues = () => {
  
-    xLabels = chartState.map((data)=>(data.week))
+   xLabels = chartState.map((data)=>(data.week))
    gmDollar = chartState.map((data)=>(Number(data?.gmDollor?.replace(/[^0-9.-]+/g, ""))))
    gmPercent = chartState.map((data)=>Number(data.gmPercent.replace("%","")))
-    console.log("hi", xLabels, gmDollar, gmPercent)
+    
   };
 
   useEffect(() => {
@@ -41,7 +37,7 @@ export default function ChartsApp() {
         }
       {chartState.length > 0 ? (
         <LineChart
-          width={1400}
+          width={900}
           height={700}
           series={[
             { data: gmDollar, label: "GM Dollars", yAxisId: "leftAxisId" },
@@ -56,7 +52,7 @@ export default function ChartsApp() {
           {" "}
           <Box sx={{ display: "flex" }}>
             <CircularProgress />
-          </Box>{" "}
+          </Box>
         </div>
       )}
     </div>

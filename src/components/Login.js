@@ -28,13 +28,11 @@ const Card = styled(MuiCard)(({ theme }) => ({
 }));
 
 export default function Login(props) {
-  
   const [emailError, setEmailError] = React.useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = React.useState("");
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
-  const isLogin = useSelector(state=>state.optimus.isLogin)
-
+  const isLogin = useSelector((state) => state.optimus.isLogin);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -46,28 +44,17 @@ export default function Login(props) {
       return;
     }
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
 
     try {
-
-      console.log({
-        email: data.get("email"),
-        password: data.get("password"),
-      });
       const user = await signInWithEmailAndPassword(
-        auth, data.get("email"), data.get("password")
-
+        auth,
+        data.get("email"),
+        data.get("password")
       );
-      navigate("/details")
-      dispatch(userLogged())
-
-      console.log(user);
+      navigate("/details");
+      dispatch(userLogged());
     } catch (error) {
       console.error(error);
-
     }
   };
 
@@ -99,21 +86,22 @@ export default function Login(props) {
   };
 
   return (
-    <Box sx={{
-      display: "flex",
-      alignItems:"center",
-      justifyContent:"center",
-      marginTop:"10rem"
-    }}>
-     
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: "10rem",
+      }}
+    >
       <CssBaseline enableColorScheme />
       {console.log(isLogin)}
 
       <Card variant="outlined">
         <Typography
-          component="h1"
+          component="span"
           variant="h4"
-          sx={{ width: "100%", fontSize: "clamp(2rem, 10vw, 2.15rem)"}}
+          sx={{ width: "100%", fontSize: "clamp(2rem, 10vw, 2.15rem)" }}
         >
           Login
         </Typography>

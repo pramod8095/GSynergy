@@ -1,6 +1,6 @@
 import api from "./api";
 
-export const getSku = async (skuId) => {
+export const getSku = async () => {
   try {
     const response = await api.get("/sku");
     return response.data;

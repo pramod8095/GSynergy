@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState ={
     isLogin:false,
-    chartData:""
+    chartData:"",
+    storeData:""
 }
 
 
@@ -17,11 +18,21 @@ export const centeralDataSlice = createSlice({
 
         chartData: (state, action)=>{
             state.chartData =  action.payload
+        },
+        storeData : (state, action)=>{
+            state.storeData = action.payload
+        },
+        deteteStoreData : (state, action)=>{
+            const newStoreData = state.storeData.filter((data)=>data.id !== action.payload);
+            state.storeData = newStoreData;
+        },
+        addStoreData: (state, action)=>{
+            state.storeData = [...state.storeData, action.payload]
         }
 
     }
 
 })
 
-export const { userLogged, chartData } = centeralDataSlice.actions;
+export const { userLogged, chartData, storeData, deteteStoreData,addStoreData } = centeralDataSlice.actions;
 export default centeralDataSlice.reducer;

@@ -67,7 +67,7 @@ export default function Hero() {
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 3, borderColor: "divider" }}
+        sx={{ borderRight: 3, borderColor: "divider", }}
       >
         <Tab icon={<StoreIcon/> } iconPosition="start" label={`Stores`} {...a11yProps(0)} />
         <Tab icon={<CategoryIcon />} iconPosition="start" label="SKU" {...a11yProps(1)} />
